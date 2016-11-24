@@ -1,3 +1,4 @@
+local shared = ngx.shared
 local fulluri 
 local house 
 local prefixtable 
@@ -19,9 +20,9 @@ end
 -- fetching the house name from uri 
 house = gethouse(ngx.var.uri)
 -- loading shared routes 
-routes = ngx.shared.routes
+routes = shared.routes
 -- loading the prefix shsred memory 
-prefixtable = ngx.shared.prefix
+prefixtable = shared.prefix
 -- getting prefix from prefix shared memory
 prefix = prefixtable:get("prefix")
   local randomone = math.random(1,10)

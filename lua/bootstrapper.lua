@@ -1,13 +1,16 @@
+-- author archi 
+
 local delay =5 -- in seconds
 local new_timer = ngx.timer.at
 local log = ngx.log
 local ERR = ngx.ERR
+local shared = ngx.shared
 local check
 --decode writes the data to the shared memory
 function loader(json) 
-    local prefixtable = ngx.shared.prefix 
-    local routes = ngx.shared.routes
-    local keys = ngx.shared.routes
+    local prefixtable = shared.prefix 
+    local routes = shared.routes
+    local keys = shared.routes
     local prefix = prefixtable:get("prefix")
     if prefix == 1 then
       for key,value in pairs(json) do
